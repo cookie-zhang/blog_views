@@ -4,7 +4,6 @@ import './index.scss'
 import Head from '../../compontens/header/header'
 import Footer from '../../compontens/footer/footer'
 import { Icon,Calendar,Timeline,Divider,Button  } from 'antd';
-import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts';
 
 var data = genData(50);

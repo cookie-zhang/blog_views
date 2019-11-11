@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Layout } from 'antd'
 import './footer.scss'
-import { Link } from 'react-router-dom';
 const { Footer } = Layout;
 
 class Heade extends PureComponent {

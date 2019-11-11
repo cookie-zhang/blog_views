@@ -3,7 +3,6 @@ import React, { PureComponent } from 'react'
 import './index.scss'
 import { Link } from 'react-router-dom'
 import { Button } from 'antd';
-import Item from 'antd/lib/list/Item';
 // import './liuxing.js'
 class Home extends PureComponent {
     constructor(props) {

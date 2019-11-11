@@ -28,12 +28,15 @@
           height: 70%;
           margin-top: 13px;
           .link{
+            float: left;
+            height: 100%;
             color: #fff;
           }
           li{
             float: left;
             width:100px;
             height: 100%;
+            text-align: center;
           }
         }
       }
