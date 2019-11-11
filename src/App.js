@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'
+import { HashRouter, Route } from 'react-router-dom'
 import Home from './pages/home'
+import blog from './pages/blog'
 
 
 
 class App extends Component {
   render(){
     return(
-      <BrowserRouter>
+      <HashRouter>
         <Route path='/' exact component={Home}></Route>
-      </BrowserRouter>
+        <Route path='/blog' exact component={blog}></Route>
+      </HashRouter>
     )
   }
 }
