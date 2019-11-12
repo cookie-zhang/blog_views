@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import Header from '../../compontens/header/header'
+import Footer from '../../compontens/footer/footer'
 import './index.scss'
-import { Menu, Icon, Switch } from 'antd';
-const { SubMenu } = Menu;
+import { Menu, Icon } from 'antd';
 
 class Informainleassay extends PureComponent {
   // eslint-disable-next-line no-useless-constructor
@@ -143,6 +143,7 @@ class Informainleassay extends PureComponent {
            </div>
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

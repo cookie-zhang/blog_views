@@ -1,12 +1,12 @@
 import React, {
   PureComponent
 } from 'react'
+import './index.scss'
 import Header from '../../compontens/header/header'
+import Footer from '../../compontens/footer/footer'
 
 class Aboutme extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+  
   render(){
     return (
       <div className='aboutme-box'>
@@ -14,6 +14,7 @@ class Aboutme extends PureComponent {
         <div className='aboutme-container'>
           about me
         </div>
+        <Footer />
       </div>
     )
   }
