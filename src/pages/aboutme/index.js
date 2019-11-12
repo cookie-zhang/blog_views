@@ -4,10 +4,7 @@ import React, {
 import './index.scss'
 import Header from '../../compontens/header/header'
 import Footer from '../../compontens/footer/footer'
-<<<<<<< HEAD
 import './index.scss'
-=======
->>>>>>> a7e91cec4421756d9c2defe3d5e8b7550335b295
 
 class Aboutme extends PureComponent {
   
@@ -16,12 +13,27 @@ class Aboutme extends PureComponent {
       <div className='aboutme-box'>
         <Header />
         <div className='aboutme-container'>
-          kadshfk
-        </div>
-        <div className='footer'>
-          <Footer />
+          <div className='img-box'>
+            <img src='http://cookiezhang.com/imgs/vue1.jpg' />
+          </div>
+          <div className='infos-box'>
+            <p>张见飞</p>
+            <p>web 前端工程师一枚 </p>
+            <p>认真钻研技术</p>
+            <p>仔细品味人生</p>
+          </div>
+          <div className='link-div'>
+            <h3></h3>
+          </div>
+          <div className='link-box'>
+            <img src='http://cookiezhang.com/imgs/vue1.jpg'></img>  
+            <img src='http://cookiezhang.com/imgs/vue1.jpg'></img>  
+            <img src='http://cookiezhang.com/imgs/vue1.jpg'></img>  
+            <img src='http://cookiezhang.com/imgs/vue1.jpg'></img>          
+          </div>
         </div>
         <Footer />
+        
       </div>
     )
   }

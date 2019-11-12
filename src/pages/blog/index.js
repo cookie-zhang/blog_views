@@ -110,10 +110,6 @@ class Home extends PureComponent {
     }
     this.onPanelChange = this.onPanelChange.bind(this);
     
-
-
-
-
   }
   componentDidMount () {
     this.newGraph()
