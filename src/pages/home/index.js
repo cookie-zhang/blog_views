@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import { Button } from 'antd';
 // import './liuxing.js'
 class Home extends PureComponent {
-    constructor(props) {
-      super(props);
+    constructor(props,context) {
+      super(props,context);
       this.state = { 
         flag: false,
         posFlag:false,
@@ -42,7 +42,6 @@ class Home extends PureComponent {
     letfunction(){
       return Math.ceil(-Math.random()*800)+'px'
     }
-   
 
 
   render() {
@@ -76,8 +75,10 @@ class Home extends PureComponent {
                 this.state.sort.map((item,index)=>{
                   return(
                     <li key={index} className={this.state.posFlag === true ? 'end':''} style={{pos}}>
-                      {item.type}
-                      <p>{item.content}</p>
+                      <Link to={'/informaineassay'}>
+                        {item.type}
+                        <p>{item.content}</p>
+                      </Link>
                     </li>
                   )
                 })

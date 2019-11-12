@@ -1,14 +1,16 @@
 import React, {
   PureComponent
 } from 'react'
+import './index.scss'
 import Header from '../../compontens/header/header'
 import Footer from '../../compontens/footer/footer'
+<<<<<<< HEAD
 import './index.scss'
+=======
+>>>>>>> a7e91cec4421756d9c2defe3d5e8b7550335b295
 
 class Aboutme extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+  
   render(){
     return (
       <div className='aboutme-box'>
@@ -19,6 +21,7 @@ class Aboutme extends PureComponent {
         <div className='footer'>
           <Footer />
         </div>
+        <Footer />
       </div>
     )
   }
