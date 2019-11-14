@@ -1,0 +1,1 @@
+const SUIBI_LIST_DATA = 'suibi_list_data'

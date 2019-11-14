@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import Header from '../../compontens/header/header'
 import Footer from '../../compontens/footer/footer'
+import { actionCreators } from './store'
 import './index.scss'
 import { Menu, Icon } from 'antd';
 
 class Informainleassay extends PureComponent {
-  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -56,13 +57,11 @@ class Informainleassay extends PureComponent {
       mode: value ? 'vertical' : 'inline',
     });
   };
-
   changeTheme = value => {
     this.setState({
       theme: value ? 'dark' : 'light',
     });
   };
-
   render() {
     let { articleList } = this.state;
     return (
@@ -77,7 +76,6 @@ class Informainleassay extends PureComponent {
            mode={this.state.mode}
            theme={this.state.theme}
          >
-         
           <Menu.Item key="1">
             All
           </Menu.Item>
@@ -105,15 +103,7 @@ class Informainleassay extends PureComponent {
           <Menu.Item key="9">
             TypeScript
           </Menu.Item>
-         
-          
-         
          </Menu>
-
-
-
-
-              
            </div>
            <div className='main-right-list'>
            {
@@ -144,9 +134,35 @@ class Informainleassay extends PureComponent {
           </div>
         </div>
         <Footer />
+        {this.props.list}
       </div>
     )
+  };
+  componentDidMount() {
+    // debugger
+    // this.props.articleList();
+    // console.log(this.props)
+  };
+  componentWillMount(){
+    debugger
+    this.props.articleList();
+    console.log(this.props)
   }
 }
 
-export default Informainleassay
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    list: state.getIn(['informaineassay','list']),
+  }
+}
+const mapDispatchToProps  = (dispatch) => {
+  return {
+    articleList(){
+      debugger
+      dispatch(actionCreators.getHomeInfor());
+    },
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Informainleassay)
