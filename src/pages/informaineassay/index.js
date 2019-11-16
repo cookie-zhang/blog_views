@@ -64,6 +64,7 @@ class Informainleassay extends PureComponent {
   };
   render() {
     let { articleList } = this.state;
+    let { list } = this.props;
     return (
       <div className='Informainleassay-box'>
         <Header />
@@ -107,13 +108,13 @@ class Informainleassay extends PureComponent {
            </div>
            <div className='main-right-list'>
            {
-            articleList.map((item, index) => {
+            this.props.list.map((item, index) => {
               return(
-                <div className='article-list-box' key={index}>
+                <div className='article-list-box' key={item.get('id')}>
                   <div className='article-list-contanier'>
                     <div className='article-list-words'>
-                      <h2>{item.title}</h2>
-                      <div className='article-title'>{item.content}</div>
+                      <h2>{item.get('title')}</h2>
+                      <div className='article-title'>{item.get('introduce')}</div>
                     </div>
                     <div className='dianzan'>
                       <Icon className='icon' type="heart" theme="twoTone" twoToneColor="#eb2f96" /> 
@@ -123,7 +124,7 @@ class Informainleassay extends PureComponent {
                       <Icon className='icon' type="form"/>
                     </div>
                     <div className='article-list-img'>
-                      <img src={item.img} />
+                      <img src={item.get('coverImg')} />
                     </div>
                   </div>
                 </div>
@@ -134,24 +135,15 @@ class Informainleassay extends PureComponent {
           </div>
         </div>
         <Footer />
-        {this.props.list}
       </div>
     )
   };
   componentDidMount() {
-    // debugger
-    // this.props.articleList();
-    // console.log(this.props)
-  };
-  componentWillMount(){
-    debugger
     this.props.articleList();
-    console.log(this.props)
-  }
+  };
+  
 }
-
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     list: state.getIn(['informaineassay','list']),
   }
@@ -159,7 +151,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps  = (dispatch) => {
   return {
     articleList(){
-      debugger
       dispatch(actionCreators.getHomeInfor());
     },
   }
