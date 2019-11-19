@@ -10,61 +10,17 @@ class Informainleassay extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      articleList:[
-        {
-          id: 1,
-          title:'真实到赤裸的国产良心片，多希望你看不懂',
-          content:'真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂',
-          img:'http://cookiezhang.com/imgs/vue1.jpg'
-        },
-        {
-          id: 2,
-          title:'【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！',
-          content:'【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！实到赤【倒计时2天】双十一促销仅一天【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂',
-          img:'http://cookiezhang.com/imgs/vue2.jpg'
-        },
-        {
-          id: 3,
-          title:'真实到赤裸的国产良心片，多希望你看不懂',
-          content:'真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂',
-          img:'http://cookiezhang.com/imgs/vue1.jpg'
-        },
-        {
-          id: 4,
-          title:'【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！',
-          content:'【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！实到赤【倒计时2天】双十一促销仅一天【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂',
-          img:'http://cookiezhang.com/imgs/vue2.jpg'
-        },
-        {
-          id: 5,
-          title:'真实到赤裸的国产良心片，多希望你看不懂',
-          content:'真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂',
-          img:'http://cookiezhang.com/imgs/vue2.jpg'
-        },
-        {
-          id: 6,
-          title:'【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！',
-          content:'【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！实到赤【倒计时2天】双十一促销仅一天【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂',
-          img:'http://cookiezhang.com/imgs/vue2.jpg'
-        }
-      ],
       mode: 'inline',
-    theme: 'light',
+      theme: 'light',
+      articleList: props.list || []
     }
+    this.handleMenuItem = this.handleMenuItem.bind(this)
   }
-  changeMode = value => {
-    this.setState({
-      mode: value ? 'vertical' : 'inline',
-    });
-  };
-  changeTheme = value => {
-    this.setState({
-      theme: value ? 'dark' : 'light',
-    });
-  };
+  handleMenuItem(value){
+    let allList = this.props.list;
+    this.props.TypeList(allList, value.key)
+  }
   render() {
-    let { articleList } = this.state;
-    let { list } = this.props;
     return (
       <div className='Informainleassay-box'>
         <Header />
@@ -72,38 +28,24 @@ class Informainleassay extends PureComponent {
           <div className='Informainleassay-main'>
            <div className='main-left-nav'>
            <Menu
-           defaultSelectedKeys={['1']}
-           defaultOpenKeys={['sub1']}
-           mode={this.state.mode}
-           theme={this.state.theme}
-         >
-          <Menu.Item key="1">
-            All
+              defaultSelectedKeys={['0']}
+              defaultOpenKeys={['sub1']}
+              mode={this.state.mode}
+              onClick={this.handleMenuItem}
+              // theme={this.state.theme}
+            >
+         <Menu.Item key='0'>
+            ALL
           </Menu.Item>
-          <Menu.Item key="2">
-            CSS
-          </Menu.Item>
-          <Menu.Item key="3">
-            Html5
-          </Menu.Item>
-          <Menu.Item key="4">
-            Nodejs
-          </Menu.Item>
-          <Menu.Item key="5">
-            Eggjs
-          </Menu.Item>
-          <Menu.Item key="6">
-            Reactjs
-          </Menu.Item>
-          <Menu.Item key="7">
-            Vuejs
-          </Menu.Item>
-          <Menu.Item key="8">
-            Koa2js
-          </Menu.Item>
-          <Menu.Item key="9">
-            TypeScript
-          </Menu.Item>
+         {
+           this.props.typeList.map((item,index)=>{
+              return (
+                <Menu.Item key={item.get('id')}>
+                  {item.get('type')}
+                </Menu.Item>
+              )
+           })
+         }
          </Menu>
            </div>
            <div className='main-right-list'>
@@ -138,21 +80,34 @@ class Informainleassay extends PureComponent {
       </div>
     )
   };
-  componentDidMount() {
-    this.props.articleList();
+  componentDidMount() { 
+    this.props.articleList();  // 初始化数据
+    this.props.articleTypeList(); // 导航
   };
   
 }
 const mapStateToProps = (state) => {
   return {
     list: state.getIn(['informaineassay','list']),
+    typeList: state.getIn(['informaineassay','typeList']),
+    curList: state.getIn(['informaineassay','curList'])
   }
 }
 const mapDispatchToProps  = (dispatch) => {
   return {
+    // 文章列表
     articleList(){
-      dispatch(actionCreators.getHomeInfor());
+      dispatch(actionCreators.getsuibiList());
     },
+    // 左边分类导航
+    articleTypeList(){
+      dispatch(actionCreators.getarticleTypeList());
+    },
+    //点击导航
+    TypeList(allList, typeItem){
+      debugger
+      dispatch(actionCreators.getFilterList(allList, typeItem));
+    }
   }
 }
 
