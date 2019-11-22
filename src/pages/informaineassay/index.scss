@@ -56,6 +56,15 @@
                 padding: 0 10px;
                 display: inline-block;
                 width: 70%;
+                p{
+                  font-size: 18px;
+                  font-weight: 700;
+                }
+              }
+              .article-list-words:hover,h2:hover{
+                cursor: pointer;
+                text-decoration: underline;
+                color:#6e30e0;
               }
               .dianzan{
                 float: left;

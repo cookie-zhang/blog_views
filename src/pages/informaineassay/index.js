@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from '../../compontens/header/header'
 import Footer from '../../compontens/footer/footer'
 import { actionCreators } from './store'
+import { Link } from 'react-router-dom'
 import './index.scss'
 import { Menu, Icon } from 'antd';
 
@@ -17,8 +18,7 @@ class Informainleassay extends PureComponent {
     this.handleMenuItem = this.handleMenuItem.bind(this)
   }
   handleMenuItem(value){
-    let allList = this.props.list;
-    this.props.TypeList(allList, value.key)
+    this.props.TypeList(value.key)
   }
   render() {
     return (
@@ -49,13 +49,15 @@ class Informainleassay extends PureComponent {
          </Menu>
            </div>
            <div className='main-right-list'>
+           
            {
-            this.props.list.map((item, index) => {
+            this.props.curList.map((item, index) => {
               return(
                 <div className='article-list-box' key={item.get('id')}>
+                <Link to={'/detail/'+item.get('id') } style={{color: 'rgba(0, 0, 0, 0.65)'}}> 
                   <div className='article-list-contanier'>
                     <div className='article-list-words'>
-                      <h2>{item.get('title')}</h2>
+                      <p>{item.get('title')}</p>
                       <div className='article-title'>{item.get('introduce')}</div>
                     </div>
                     <div className='dianzan'>
@@ -69,6 +71,7 @@ class Informainleassay extends PureComponent {
                       <img src={item.get('coverImg')} />
                     </div>
                   </div>
+                  </Link>
                 </div>
               )
             })
@@ -104,9 +107,8 @@ const mapDispatchToProps  = (dispatch) => {
       dispatch(actionCreators.getarticleTypeList());
     },
     //点击导航
-    TypeList(allList, typeItem){
-      debugger
-      dispatch(actionCreators.getFilterList(allList, typeItem));
+    TypeList(typeItem){
+      dispatch(actionCreators.getFilterList(typeItem));
     }
   }
 }

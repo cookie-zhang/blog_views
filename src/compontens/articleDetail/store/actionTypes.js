@@ -1,0 +1,1 @@
+export const BLOG_ARTICLE_DETAIL = 'blog_artile_detail'

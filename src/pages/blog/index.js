@@ -1,10 +1,13 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { actionCreators } from './store'
 import './index.scss'
 import Head from '../../compontens/header/header'
 import Footer from '../../compontens/footer/footer'
 import { Icon,Calendar,Timeline,Divider,Button  } from 'antd';
 import echarts from 'echarts';
+import { Link } from 'react-router-dom'
 
 var data = genData(50);
 function genData(count) {
@@ -67,7 +70,6 @@ series : [
 class Home extends PureComponent {
   constructor(props){
     super();
-
     this.state = {
       articleList:[
         {
@@ -109,16 +111,21 @@ class Home extends PureComponent {
       ]
     }
     this.onPanelChange = this.onPanelChange.bind(this);
+    this.handleDetail = this.handleDetail.bind(this);
     
   }
   componentDidMount () {
-    this.newGraph()
+    this.newGraph();
+    this.props.getWords();
+    this.props.getlist();
   }
   newGraph(){
       var myChart = echarts.init(document.getElementById('kidGraph'));
       myChart.setOption(echartsOption)
   }
+  handleDetail(){
 
+  }
   onPanelChange(value, mode){
     console.log(value, mode);
   }
@@ -132,7 +139,11 @@ class Home extends PureComponent {
             <div className='day-talkshow'>
               <h2>每日一语</h2>
               <div className='talkshow'>
-              生活有苦有甜，才叫完整。日子有阴有晴，才叫自然。心情有悲有喜，才叫体会。爱情有闹有和，才叫情趣。
+              {this.props.words.map(item=>{
+                return (
+                  <div>{item.get('words')}</div>
+                )
+              })}
               </div>
               <div className='talkAythor'>——张见飞</div>
             </div>
@@ -198,13 +209,14 @@ class Home extends PureComponent {
           </div>
           <div className='center-box'>
           {
-            articleList.map((item, index) => {
+            this.props.list.map((item, index) => {
               return(
-                <div className='article-list-box' key={index}>
+                <div className='article-list-box' key={item.get('id')}>
+                <Link to={'/detail/'+item.get('id') } style={{color: 'rgba(0, 0, 0, 0.65)'}}> 
                   <div className='article-list-contanier'>
-                    <div className='article-list-words'>
-                      <h2>{item.title}</h2>
-                      <div className='article-title'>{item.content}</div>
+                    <div className='article-list-words' onClick={this.handleDetail}>
+                      <p>{item.get('title')}</p>
+                      <div className='article-title'>{item.get('introduce')}</div>
                     </div>
                     <div className='dianzan'>
                       <Icon className='icon' type="heart" theme="twoTone" twoToneColor="#eb2f96" /> 
@@ -214,9 +226,10 @@ class Home extends PureComponent {
                       <Icon className='icon' type="form"/>
                     </div>
                     <div className='article-list-img'>
-                      <img src={item.img} />
+                      <img src={item.get('coverImg')} />
                     </div>
                   </div>
+                  </Link>
                 </div>
               )
             })
@@ -225,36 +238,21 @@ class Home extends PureComponent {
           </div>
           <div className='right-box'>
             <div className='timeline-box'>
-              <Timeline>
-                  <Timeline.Item>
-                    <p>2019-11-11 16:40:32</p>
-                    <div style={{with:'100px',border:'1px solid #ccc',padding:'5px', borderRadius:'10px'}}>
-                      <h4 style={{fontWeight:'700'}}>真实到赤裸的国产良心片</h4>
-                      <div style={{fontSize:'12px'}}>咯技术的和卡号多少空间啊科技时代和卡号是的开今安徽山东卡机啊</div>
-                    </div>
-                  </Timeline.Item>
-                  <Timeline.Item>
-                    <p>2019-11-11 16:40:32</p>
-                    <div style={{with:'100px',border:'1px solid #ccc',padding:'5px', borderRadius:'10px'}}>
-                      <h4 style={{fontWeight:'700'}}>真实到赤裸的国产良心片</h4>
-                      <div style={{fontSize:'12px'}}>咯技术的和卡号多少空间啊科技时代和卡号是的开今安徽山东卡机啊</div>
-                    </div>
-                  </Timeline.Item>
-                  <Timeline.Item>
-                    <p>2019-11-11 16:40:32</p>
-                    <div style={{with:'100px',border:'1px solid #ccc',padding:'5px', borderRadius:'10px'}}>
-                      <h4 style={{fontWeight:'700'}}>真实到赤裸的国产良心片</h4>
-                      <div style={{fontSize:'12px'}}>咯技术的和卡号多少空间啊科技时代和卡号是的开今安徽山东卡机啊</div>
-                    </div>
-                  </Timeline.Item>
-                  <Timeline.Item>
-                  <p>2019-11-11 16:40:32</p>
-                  <div style={{with:'100px',border:'1px solid #ccc',padding:'5px', borderRadius:'10px'}}>
-                    <h4 style={{fontWeight:'700'}}>真实到赤裸的国产良心片</h4>
-                    <div style={{fontSize:'12px'}}>咯技术的和卡号多少空间啊科技时代和卡号是的开今安徽山东卡机啊</div>
-                  </div>
-                  </Timeline.Item>
-                </Timeline>
+                  {
+                    this.props.timeList.map((item,index)=>{
+                      return (
+                        <Link to={'/detail/'+item.get('id') } style={{color: 'rgba(0, 0, 0, 0.65)'}}> 
+                          <Timeline.Item className='timeLine'>
+                            <p >{item.get('createdAt')}</p>
+                            <div className='timeLineTile' style={{}}>
+                              <span className='h4'>{item.get('title')}</span>
+                              <div className='introduce' style={{fontSize:'12px'}}>{item.get('introduce')}</div>
+                            </div>
+                          </Timeline.Item>
+                        </Link>
+                      )
+                    })
+                  }
             </div>
             <div className='kidGraph-box'>
               <div id="kidGraph"></div>
@@ -267,4 +265,24 @@ class Home extends PureComponent {
     )
   }
 }
-export default Home
+
+const mapStateToProps = (state) => {
+  return {
+    words: state.getIn(['blog','words']),
+    list: state.getIn(['blog','list']),
+    timeList: state.getIn(['blog','timeList']),
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    //文章
+    getlist(){
+      dispatch(actionCreators.articleList())
+    },
+    // 每日一语
+    getWords(){
+      dispatch(actionCreators.getWords());
+    },
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Home)

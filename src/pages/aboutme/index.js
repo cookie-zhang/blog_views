@@ -25,11 +25,7 @@ class Aboutme extends PureComponent {
           <div className='link-div'>
             <h3></h3>
           </div>
-          <div className='link-box'>
-            <img src='http://cookiezhang.com/imgs/vue1.jpg'></img>  
-            <img src='http://cookiezhang.com/imgs/vue1.jpg'></img>  
-            <img src='http://cookiezhang.com/imgs/vue1.jpg'></img>  
-            <img src='http://cookiezhang.com/imgs/vue1.jpg'></img>          
+          <div className='link-box'>      
           </div>
         </div>
         <Footer />
