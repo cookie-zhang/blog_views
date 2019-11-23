@@ -5,7 +5,7 @@ import store from './store/index'
 import Home from './pages/home'
 import Blog from './pages/blog'
 import Informaineassay from './pages/informaineassay'
-import Aboutme  from "./pages/aboutme/index";
+import Aboutme  from "./pages/aboutme/index"
 import Detail from './compontens/articleDetail'
 import Resume from './pages/resume'
 

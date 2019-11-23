@@ -70,46 +70,6 @@ series : [
 class Home extends PureComponent {
   constructor(props){
     super();
-    this.state = {
-      articleList:[
-        {
-          id: 1,
-          title:'真实到赤裸的国产良心片，多希望你看不懂',
-          content:'真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂',
-          img:'http://cookiezhang.com/imgs/vue1.jpg'
-        },
-        {
-          id: 2,
-          title:'【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！',
-          content:'【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！实到赤【倒计时2天】双十一促销仅一天【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂',
-          img:'http://cookiezhang.com/imgs/vue2.jpg'
-        },
-        {
-          id: 3,
-          title:'真实到赤裸的国产良心片，多希望你看不懂',
-          content:'真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂',
-          img:'http://cookiezhang.com/imgs/vue1.jpg'
-        },
-        {
-          id: 4,
-          title:'【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！',
-          content:'【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！实到赤【倒计时2天】双十一促销仅一天【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂',
-          img:'http://cookiezhang.com/imgs/vue2.jpg'
-        },
-        {
-          id: 5,
-          title:'真实到赤裸的国产良心片，多希望你看不懂',
-          content:'真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂',
-          img:'http://cookiezhang.com/imgs/vue2.jpg'
-        },
-        {
-          id: 6,
-          title:'【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！',
-          content:'【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！实到赤【倒计时2天】双十一促销仅一天【倒计时2天】双十一促销仅一天，但我们的产品免费用一年！多希望你看不懂真实到赤裸的国产良心片，多希望你看不懂',
-          img:'http://cookiezhang.com/imgs/vue2.jpg'
-        }
-      ]
-    }
     this.onPanelChange = this.onPanelChange.bind(this);
     this.handleDetail = this.handleDetail.bind(this);
     
@@ -141,7 +101,7 @@ class Home extends PureComponent {
               <div className='talkshow'>
               {this.props.words.map(item=>{
                 return (
-                  <div>{item.get('words')}</div>
+                  <div key={item.id}>{item.get('words')}</div>
                 )
               })}
               </div>
