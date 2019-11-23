@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Header from '../../compontens/header/header'
@@ -49,7 +50,6 @@ class Informainleassay extends PureComponent {
          </Menu>
            </div>
            <div className='main-right-list'>
-           
            {
             this.props.curList.map((item, index) => {
               return(

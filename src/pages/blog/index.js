@@ -130,7 +130,6 @@ class Home extends PureComponent {
     console.log(value, mode);
   }
   render() {
-    let { articleList } = this.state;
     return (
       <div className='blog-contanier'>
         <Head></Head>
