@@ -133,7 +133,8 @@ class Home extends PureComponent {
     return (
       <div className='blog-contanier'>
         <Head></Head>
-        <div className='main-box'>
+        <div className='main-contanier'>
+          <div className='main-box'>
           <div className='left-box'>
             <div className='day-talkshow'>
               <h2>每日一语</h2>
@@ -258,6 +259,7 @@ class Home extends PureComponent {
             </div>
             
           </div>
+        </div>
         </div>
         <Footer />
       </div>
