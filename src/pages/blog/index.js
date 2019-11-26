@@ -111,58 +111,15 @@ class Home extends PureComponent {
               <Calendar fullscreen={false} onPanelChange={this.onPanelChange} />
             </div>
             <div className='infomalessay-box'>
-              <Divider  orientation="left"> <h2>亲随笔</h2></Divider>
+              <Divider  orientation="left"> <h2></h2></Divider>
               <div className='infomalessay-list-box'>
-                <ul>
-                  <li>
-                    1.就暗杀圣诞节哈师大哈斯夺冠
-                  </li>
-                  <li>
-                    1.就暗杀圣诞节哈师大哈斯夺冠
-                  </li>
-                  <li>
-                    1.就暗杀圣诞节哈师大哈斯夺冠
-                  </li>
-                  <li>
-                    1.就暗杀圣诞节哈师大哈斯夺冠
-                  </li>
-                  <li>
-                    1.就暗杀圣诞节哈师大哈斯夺冠
-                  </li>
-                </ul>
+                公告位
               </div>
             </div>
-
             <div className='infomalessay-box'>
-              <Divider  orientation="left"> <h2>分类</h2></Divider>
+              <Divider  orientation="left"> <h2></h2></Divider>
               <div className='infomalessay-list-box'>
-                <h3>css<span style={{fontSize:'12px',float:'right',cursor:'pointer'}}>更多》》</span></h3>
-                <ul>
-                  <li>
-                    1.就暗杀圣诞节哈师大哈斯夺冠大哈斯夺冠
-                  </li>
-                  <li>
-                    1.就暗杀圣诞节哈师大哈斯夺冠大哈斯夺冠
-                  </li>
-                </ul>
-                <h3>html<span style={{fontSize:'12px',float:'right',cursor:'pointer'}}>更多》》</span></h3>
-                <ul>
-                  <li>
-                    1.就暗杀圣诞节哈师大哈斯夺冠大哈斯夺冠
-                  </li>
-                  <li>
-                    1.就暗杀圣诞节哈师大哈斯夺冠大哈斯夺冠
-                  </li>
-                </ul>
-                <h3>Vue<span style={{fontSize:'12px',float:'right',cursor:'pointer'}}>更多》》</span></h3>
-                <ul>
-                  <li>
-                    1.就暗杀圣诞节哈师大哈斯夺冠大哈斯夺冠
-                  </li>
-                  <li>
-                    1.就暗杀圣诞节哈师大哈斯夺冠大哈斯夺冠
-                  </li>
-                </ul>
+                公告位
               </div>
             </div>
 
@@ -178,13 +135,13 @@ class Home extends PureComponent {
                       <p>{item.get('title')}</p>
                       <div className='article-title'>{item.get('introduce')}</div>
                     </div>
-                    <div className='dianzan'>
-                      <Icon className='icon' type="heart" theme="twoTone" twoToneColor="#eb2f96" /> 
-                      <Icon className='icon' type="like" theme="twoTone" twoToneColor="#eb2f96"  />
-                      <Icon className='icon' type="dislike"  theme="twoTone" twoToneColor="#eb2f96" />
-                      <Icon className='icon' type="github" />
-                      <Icon className='icon' type="form"/>
-                    </div>
+                      {/*<div className='dianzan'>
+                          <Icon className='icon' type="heart" theme="twoTone" twoToneColor="#eb2f96" /> 
+                          <Icon className='icon' type="like" theme="twoTone" twoToneColor="#eb2f96"  />
+                          <Icon className='icon' type="dislike"  theme="twoTone" twoToneColor="#eb2f96" />
+                          <Icon className='icon' type="github" />
+                          <Icon className='icon' type="form"/> 
+                        </div> */}
                     <div className='article-list-img'>
                       <img src={item.get('coverImg')} />
                     </div>
