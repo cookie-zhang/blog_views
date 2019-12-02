@@ -14,7 +14,7 @@ class Aboutme extends PureComponent {
         <div className='main-box'>
           <div className='aboutme-container'>
             <div className='img-box'>
-              <img src='http://cookiezhang.com/imgs/caochang1.jpg' /><br/>
+              <img src='https://cookiezhang.com/imgs/caochang1.jpg' /><br/>
               <Link to='/resume'><Button className='btn' type="primary">查看简历</Button></Link>
             </div>
             <div className='infos-box'>
@@ -45,7 +45,7 @@ class Aboutme extends PureComponent {
                     </li>
                     <li>
                       <span className='pad20'>微信:</span>
-                      <img src='http://cookiezhang.com/imgs/weixin.jpg'></img>
+                      <img src='https://cookiezhang.com/imgs/weixin.jpg'></img>
                     </li>
                   </ul>
                 </div>

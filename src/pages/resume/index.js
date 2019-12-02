@@ -13,22 +13,22 @@ class Aboutme extends PureComponent {
             <p className='nav'>项目展示</p>
             <div className='react'>
                 <div class="out_frount">
-                  <img src="http://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
                 </div>
                 <div class="out_back">
-                  <img src="http://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
                 </div>
                 <div class="out_left">
-                  <img src="http://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
                 </div>
                 <div class="out_right">
-                  <img src="http://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
                 </div>
                 <div class="out_top">
-                  <img src="http://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
                 </div>
                 <div class="out_bottom">
-                  <img src="http://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
                 </div>
             </div>
             <div className='react'>
@@ -97,39 +97,39 @@ class Aboutme extends PureComponent {
             <p className='nav'>项目展示</p>
             <div className='react'>
                 <div class="out_frount">
-                  <img src="http://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
                 </div>
                 <div class="out_back">
-                  <img src="http://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
                 </div>
                 <div class="out_left">
-                  <img src="http://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
                 </div>
                 <div class="out_right">
-                  <img src="http://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
                 </div>
                 <div class="out_top">
-                  <img src="http://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
                 </div>
                 <div class="out_bottom">
-                  <img src="http://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
                 </div>
             </div>
               <div className='react'>
                 <div class="out_frount">
-                  <img src="http://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
                 </div>
                 <div class="out_back">
-                  <img src="http://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
                 </div>
                 <div class="out_left">
-                  <img src="http://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
                 </div>
                 <div class="out_right">
-                  <img src="http://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
                 </div>
                 <div class="out_top">
-                  <img src="http://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
+                  <img src="https://cookiezhang.com/imgs/vue2.jpg" class="out_pic" />
                 </div>
                 <div class="out_bottom">
                   <img src="http://cookiezhang.com/imgs/vue1.jpg" class="out_pic" />
