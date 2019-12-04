@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { actionCreators } from './store'
+import { actionCreatorsB } from './store'
 import './index.scss'
 import Head from '../../compontens/header/header'
 import Footer from '../../compontens/footer/footer'
-import { Icon,Calendar,Timeline,Divider,Button  } from 'antd';
+import { Icon,BackTop,Calendar,Timeline,Divider,Button  } from 'antd';
 import echarts from 'echarts';
+import moment from 'moment';
 import { Link } from 'react-router-dom'
 
 var data = genData(50);
@@ -72,6 +73,8 @@ class Home extends PureComponent {
     super();
     this.onPanelChange = this.onPanelChange.bind(this);
     this.handleDetail = this.handleDetail.bind(this);
+    this.handleMore = this.handleMore.bind(this);
+    this.handleCollection = this.handleCollection.bind(this)
     
   }
   componentDidMount () {
@@ -83,8 +86,22 @@ class Home extends PureComponent {
       var myChart = echarts.init(document.getElementById('kidGraph'));
       myChart.setOption(echartsOption)
   }
-  handleDetail(){
-
+  handleDetail(){}
+  handleMore(){}
+  //点👍
+  handleCollection(id,likes,e){
+    let data = {
+      id: id,
+      like: likes
+    }
+    this.props.goods(data)
+    setTimeout(()=>{
+      this.props.flag.map( item => {
+        if(item.get('flag') == 1){
+          this.props.getlist()
+        }
+      })
+    },100)
   }
   onPanelChange(value, mode){
     console.log(value, mode);
@@ -92,6 +109,7 @@ class Home extends PureComponent {
   render() {
     return (
       <div className='blog-contanier'>
+      <BackTop></BackTop>
         <Head></Head>
         <div className='main-contanier'>
           <div className='main-box'>
@@ -129,29 +147,31 @@ class Home extends PureComponent {
             this.props.list.map((item, index) => {
               return(
                 <div className='article-list-box' key={item.get('id')}>
-                <Link to={'/detail/'+item.get('id') } style={{color: 'rgba(0, 0, 0, 0.65)'}}> 
                   <div className='article-list-contanier'>
                     <div className='article-list-words' onClick={this.handleDetail}>
-                      <p>{item.get('title')}</p>
-                      <div className='article-title'>{item.get('introduce')}</div>
+                      <Link to={'/detail/'+item.get('id') } style={{color: 'rgba(0, 0, 0, 0.65)'}}> 
+                        <p><span className='isOrignal'>{item.get('isOriginal') === 1? '原创':'转载'}</span>{item.get('title')}</p>
+                        <div className='article-title'>{item.get('introduce')}</div>
+                      </Link>
                     </div>
-                      {/*<div className='dianzan'>
-                          <Icon className='icon' type="heart" theme="twoTone" twoToneColor="#eb2f96" /> 
-                          <Icon className='icon' type="like" theme="twoTone" twoToneColor="#eb2f96"  />
-                          <Icon className='icon' type="dislike"  theme="twoTone" twoToneColor="#eb2f96" />
-                          <Icon className='icon' type="github" />
-                          <Icon className='icon' type="form"/> 
-                        </div> */}
+                    <div className='dianzan'>
+                      <span><Icon className='icon' type="eye" theme="twoTone" twoToneColor="#eb2f96"></Icon>{item.get('looks')}</span>
+                      <span><Icon onClick={this.handleCollection.bind(this, item.get('id'), item.get('like')) } datatype={item.get('id')} className='icon' type="like" theme="twoTone" twoToneColor="#eb2f96"></Icon>{item.get('like')}</span>
+                    </div> 
                     <div className='article-list-img'>
                       <img src={item.get('coverImg')} />
                     </div>
+                    
                   </div>
-                  </Link>
+                  
                 </div>
               )
             })
           }
-          <Button className='addmore-center-list'>加载更多》》》》</Button>
+          <Link to={'/informaineassay'}> 
+            <Button className='addmore-center-list'>查看更多 》》》</Button>
+          </Link>
+          
           </div>
           <div className='right-box'>
             <div className='timeline-box'>
@@ -160,7 +180,7 @@ class Home extends PureComponent {
                       return (
                         <Link to={'/detail/'+item.get('id') } style={{color: 'rgba(0, 0, 0, 0.65)'}}> 
                           <Timeline.Item className='timeLine'>
-                            <p >{item.get('createdAt')}</p>
+                            <p>{moment(item.get('createDate')).format('YYYY-MM-DD HH:mm:ss')}</p>
                             <div className='timeLineTile' style={{}}>
                               <span className='h4'>{item.get('title')}</span>
                               <div className='introduce' style={{fontSize:'12px'}}>{item.get('introduce')}</div>
@@ -189,18 +209,24 @@ const mapStateToProps = (state) => {
     words: state.getIn(['blog','words']),
     list: state.getIn(['blog','list']),
     timeList: state.getIn(['blog','timeList']),
+    flag: state.getIn(['blog','flag']),
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
     //文章
     getlist(){
-      dispatch(actionCreators.articleList())
+      dispatch(actionCreatorsB.articleList())
     },
     // 每日一语
     getWords(){
-      dispatch(actionCreators.getWords());
+      dispatch(actionCreatorsB.getWords());
     },
+    //点赞
+    goods(data){
+      dispatch(actionCreatorsB.getlikes(data));
+    }
+
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Home)

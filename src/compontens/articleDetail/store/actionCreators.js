@@ -9,11 +9,22 @@ const articleDetailData = (result)=> ({
   detail: fromJS(result),
 })
 
-export const articleDetail = (id)=>{
+export const articleDetail = (id, flag)=>{
   return (dispatch)=>{
       axios.get(api+'/articleDetail?id='+id).then((res)=>{
           const result = res.data.data;
+          result.looks++
           dispatch(articleDetailData(result))
+          if(flag == 1){
+            let data = {
+              id: id,
+              looks: result.looks
+            }
+            axios.post(api+'/updatearticle', data).then((res)=>{
+              console.log('200')
+            })
+          }
+         
       }).catch(()=>{
           console.log('erro1')
       })  

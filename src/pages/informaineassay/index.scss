@@ -59,12 +59,32 @@
                 p{
                   font-size: 18px;
                   font-weight: 700;
+                  overflow: hidden;
+                  text-overflow:ellipsis;
+                  white-space: nowrap;
+                  .isOrignal{
+                    float: left;
+                    width: 40px;
+                    height: 20px;
+                    margin-top: 5px;
+                    margin-right: 5px;
+                    line-height: 22px;
+                    font-size: 12px;
+                    text-align: center;
+                    color: #fff;
+                    background: rgba(40, 57, 211, .5);
+                  }
+                }
+                .article-title{
+                  display: -webkit-box;
+                  -webkit-box-orient: vertical;
+                  -webkit-line-clamp: 3;
+                  overflow: hidden;
                 }
               }
               .article-list-words:hover,h2:hover{
                 cursor: pointer;
                 text-decoration: underline;
-                color:#6e30e0;
               }
               .dianzan{
                 float: left;
@@ -72,7 +92,13 @@
                 margin-top: 10px;
                 display: inline-block;
                 width: 70%;
-                .icon{
+                span{
+                  .icon{
+                    cursor: pointer;
+                    margin-right: 5px;
+                  }
+                }
+                span:first-child{
                   margin-right: 20px;
                 }
               }

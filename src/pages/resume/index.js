@@ -2,11 +2,13 @@ import React, { PureComponent } from 'react'
 import './index.scss'
 import Header from '../../compontens/header/header'
 import './index.scss'
+import { BackTop  } from 'antd';
 
 class Aboutme extends PureComponent {
   render() {
     return (
       <div className='resume-box'>
+      <BackTop />
         <Header />
         <div className='resume-contanier'>
           <div className='resume-left'>

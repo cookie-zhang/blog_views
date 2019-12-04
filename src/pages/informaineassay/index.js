@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import Header from '../../compontens/header/header'
 import Footer from '../../compontens/footer/footer'
 import { actionCreators } from './store'
+import { actionCreatorsB } from '../blog/store'
 import { Link } from 'react-router-dom'
 import './index.scss'
-import { Menu, Icon } from 'antd';
+import { Menu, Icon, BackTop } from 'antd';
 
 class Informainleassay extends PureComponent {
   constructor(props) {
@@ -17,13 +18,30 @@ class Informainleassay extends PureComponent {
       articleList: props.list || []
     }
     this.handleMenuItem = this.handleMenuItem.bind(this)
+    this.handleCollection = this.handleCollection.bind(this)
   }
   handleMenuItem(value){
     this.props.TypeList(value.key)
   }
+  //点👍
+  handleCollection(id,likes,e){
+    let data = {
+      id: id,
+      like: likes
+    }
+    this.props.goods(data)
+    setTimeout(()=>{
+      this.props.flag.map( item => {
+        if(item.get('flag') == 1){
+          this.props.articleList()
+        }
+      })
+    },100)
+  }
   render() {
     return (
       <div className='Informainleassay-box'>
+      <BackTop />
         <Header />
         <div className='Informainleassay-contanier'>
           <div className='Informainleassay-main'>
@@ -54,24 +72,22 @@ class Informainleassay extends PureComponent {
             this.props.curList.map((item, index) => {
               return(
                 <div className='article-list-box' key={item.get('id')}>
-                <Link to={'/detail/'+item.get('id') } style={{color: 'rgba(0, 0, 0, 0.65)'}}> 
                   <div className='article-list-contanier'>
                     <div className='article-list-words'>
-                      <p>{item.get('title')}</p>
+                    <Link to={'/detail/'+item.get('id') } style={{color: 'rgba(0, 0, 0, 0.65)'}}> 
+                      <p><span className='isOrignal'>{item.get('isOriginal') === 1? '原创':'转载'}</span>{item.get('title')}</p>
                       <div className='article-title'>{item.get('introduce')}</div>
+                      </Link>
                     </div>
                     <div className='dianzan'>
-                      <Icon className='icon' type="heart" theme="twoTone" twoToneColor="#eb2f96" /> 
-                      <Icon className='icon' type="like" theme="twoTone" twoToneColor="#eb2f96"  />
-                      <Icon className='icon' type="dislike"  theme="twoTone" twoToneColor="#eb2f96" />
-                      <Icon className='icon' type="github" />
-                      <Icon className='icon' type="form"/>
+                      <span><Icon className='icon' type="eye" theme="twoTone" twoToneColor="#eb2f96"></Icon>{item.get('looks')}</span>
+                      <span><Icon onClick={this.handleCollection.bind(this, item.get('id'), item.get('like')) } datatype={item.get('id')} className='icon' type="like" theme="twoTone" twoToneColor="#eb2f96"></Icon>{item.get('like')}</span>
                     </div>
                     <div className='article-list-img'>
                       <img src={item.get('coverImg')} />
                     </div>
                   </div>
-                  </Link>
+                  
                 </div>
               )
             })
@@ -93,7 +109,8 @@ const mapStateToProps = (state) => {
   return {
     list: state.getIn(['informaineassay','list']),
     typeList: state.getIn(['informaineassay','typeList']),
-    curList: state.getIn(['informaineassay','curList'])
+    curList: state.getIn(['informaineassay','curList']),
+    flag: state.getIn(['blog','flag'])
   }
 }
 const mapDispatchToProps  = (dispatch) => {
@@ -109,6 +126,10 @@ const mapDispatchToProps  = (dispatch) => {
     //点击导航
     TypeList(typeItem){
       dispatch(actionCreators.getFilterList(typeItem));
+    },
+     //点赞
+     goods(data){
+      dispatch(actionCreatorsB.getlikes(data));
     }
   }
 }

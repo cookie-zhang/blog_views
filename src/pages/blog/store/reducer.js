@@ -3,7 +3,8 @@ import { actionTypes } from './index'
 const defaultState = fromJS({
   words: [],
   list:[],
-  timeList:[]
+  timeList:[],
+  flag: 0
 })
 
 export default (state = defaultState, action) => {
@@ -12,11 +13,15 @@ export default (state = defaultState, action) => {
       return state.merge({
         words: fromJS(action.words)
       })
-      case actionTypes.BLOG_ARTICLE_LIST:
+      case actionTypes.BLOG_ARTICLE_LIST: 
       return state.merge({
         list: fromJS(action.list),
         timeList: fromJS(action.timeList)
       })
+      case actionTypes.BLOG_LIKES:
+          return state.merge({
+            flag: fromJS(action.flag),
+          })
     default:
       return state;
   }

@@ -14,7 +14,6 @@ export const articleList = ()=>{
   return (dispatch)=>{
       axios.post(api+'/articleList').then((res)=>{
           const result = res.data.data;
-
           dispatch(articleListData(result))
       }).catch(()=>{
           console.log('erro1')
@@ -27,6 +26,7 @@ const words = (result)=> ({
   type: actionTypes.BLOG_WORDS,
   words: fromJS(result)
 })
+
 export const getWords = ()=>{
   return (dispatch)=>{
       axios.post(api+'/getwordsList').then((res)=>{
@@ -37,4 +37,19 @@ export const getWords = ()=>{
           console.log('erro1')
       })  
   }
+}
+
+const likesData = (result)=>({
+  type: actionTypes.BLOG_LIKES,
+  flag: fromJS(result)
+})
+export const getlikes = (data)=>{
+    return (dispatch)=>{
+      data.like++
+      axios.post(api+'/updatearticle', data).then((res)=>{
+        dispatch(likesData([{flag:1}]))
+      }).catch(()=>{
+          console.log('erro1')
+      })  
+    }
 }

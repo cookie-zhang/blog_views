@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import './index.scss'
 import { Link } from 'react-router-dom'
+import { BackTop  } from 'antd';
 import Header from '../../compontens/header/header'
 import './index.scss'
 import { Button } from 'antd';
@@ -10,6 +11,7 @@ class Aboutme extends PureComponent {
   render(){
     return (
       <div className='aboutme-box'>
+        <BackTop />
         <Header />
         <div className='main-box'>
           <div className='aboutme-container'>

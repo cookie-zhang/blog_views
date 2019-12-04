@@ -10,17 +10,17 @@ class Home extends PureComponent {
         flag: false,
         posFlag:false,
         sort:[
-          {type:'CSS',content:'奥兰多金克拉就是大奥兰多金克拉就是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊家都垃圾杜丽莎流口水的金卡见识到了卡戴珊'},
-          {type:'HTML5',content:'奥兰多金克拉就是奥兰多金克拉就是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊'},
-          {type:'Nodejs',content:'奥兰多金克拉就是奥兰多金克拉就是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊'},
-          {type:'React',content:'奥兰多金克拉就是奥兰多金克拉就是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊'},
-          {type:'Vue',content:'奥兰多金克拉就是大奥兰多金克拉就是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊家都垃圾杜丽莎流口水的金卡见识到了卡戴珊'},
-          {type:'Angular',content:'奥兰多金克拉就奥兰多金克拉就是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊'},
-          {type:'Eggjs',content:'奥兰多金克拉就是奥兰多金克拉就是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊'},
-          {type:'Koa2',content:'奥兰多金克拉就是大奥兰多金克拉就是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊家都垃圾杜丽莎流口水的金卡见识到了卡戴珊'},
-          {type:'Angular',content:'奥兰多金克拉就奥兰多金克拉就是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊'},
-          {type:'Eggjs',content:'奥兰多金克拉就是奥兰多金克拉就是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊'},
-          {type:'Koa2',content:'奥兰多金克拉就是大奥兰多金克拉就是大家都垃圾杜丽莎流口水的金卡见识到了卡戴珊家都垃圾杜丽莎流口水的金卡见识到了卡戴珊'},
+          {type:'CSS',content:'欢'},
+          {type:'HTML5',content:'迎'},
+          {type:'Nodejs',content:'光'},
+          {type:'React',content:'临'},
+          {type:'Vue',content:'寒'},
+          {type:'Angular',content:'舍'},
+          {type:'Eggjs',content:'一'},
+          {type:'Koa2',content:'起'},
+          {type:'Angular',content:'学'},
+          {type:'Eggjs',content:'习'},
+          {type:'Koa2',content:'吧'},
         ],
         bgList:[7,8,2,3,4,5,6],
        };
@@ -76,7 +76,7 @@ class Home extends PureComponent {
                     <li key={index} className={this.state.posFlag === true ? 'end':''} style={{pos}}>
                       <Link to={'/informaineassay'}>
                         {item.type}
-                        <p>{item.content}</p>
+                        <p style={{fontSize:'18px'}}>{item.content}</p>
                       </Link>
                     </li>
                   )
