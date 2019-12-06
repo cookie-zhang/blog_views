@@ -225,7 +225,8 @@ const mapDispatchToProps = (dispatch) => {
     //点赞
     goods(data){
       dispatch(actionCreatorsB.getlikes(data));
-    }
+    },
+    
 
   }
 }

@@ -1,7 +1,8 @@
 import { fromJS } from 'immutable';
 import { actionTypes } from './index'
 const defaultState = fromJS({
- detail:{}
+ detail:{},
+ like:{}
 })
 
 export default (state = defaultState, action) => {
@@ -10,6 +11,14 @@ export default (state = defaultState, action) => {
       return state.merge({
         detail: fromJS(action.detail)
       })
+      case actionTypes.DIANZAN:
+      return state.merge({
+        like: fromJS(action.like)
+      })
+      case actionTypes.UPDATE_DIANZAN:
+        return state.merge({
+          like: fromJS(action.like)
+        })
     default:
       return state;
   }

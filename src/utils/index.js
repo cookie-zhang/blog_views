@@ -1,1 +1,1 @@
-export const api = 'http://localhost:7001/data'
+export const api = 'https://locahost:7002/data'

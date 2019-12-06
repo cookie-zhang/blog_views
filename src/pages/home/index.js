@@ -51,12 +51,12 @@ class Home extends PureComponent {
         <div className='home-contanier'>
         {
           this.state.bgList.map((item,index)=>
-            <img  key={index} className={['bg_position bg_img'+item+' ', this.state.flag === true? 'end':''].join('')} src={require('../../static/img/bgimg'+item+'.png')} />
+            <img  key={index} className={['bg_position bg_img'+item+' ', this.state.flag === true? 'end':''].join('')} src={`https://cookiezhang.com/imgs/bgimg${item}.png`}/>
           )
         }
           <div className='home-head'>
               <div className='show'>
-                <img src={require('../../static/img/laodi.png')} />
+                <img src='https://cookiezhang.com/imgs/laodi.png' />
               </div>
               <div className='send-word'>
                 <div className='firstname'>我姓张 ！</div>

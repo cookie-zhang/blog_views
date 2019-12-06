@@ -11,29 +11,25 @@ class articleDetail extends PureComponent {
   constructor(props) {
     super();
     this.handleCollection = this.handleCollection.bind(this)
-  
   }
   componentDidMount(){
     let id = this.props.match.params.id;
     this.props.getArticleDetail(id,1);
+    this.props.dianzan(id)
   }
   handleCollection(id,likes, e){
     let data = {
       id: id,
-      like: likes,
+      like:  Number(likes),
     }
-    this.props.goods(data)
+    this.props.updateDianzan(data)
     setTimeout(()=>{
-      this.props.flag.map( item => {
-        if(item.get('flag') == 1){
-          let id = this.props.match.params.id;
-          this.props.getArticleDetail(id, 0)
-        }
-      })
+      this.props.dianzan(data.id)
     },100)
   }
   render() {
     let detail = this.props.detail
+    let like = this.props.like
     return (
       <div className="detail-box">
       <BackTop></BackTop>
@@ -55,7 +51,7 @@ class articleDetail extends PureComponent {
           <div dangerouslySetInnerHTML={{ __html: detail.get('content') }}></div>
           <div className='ding'>
             <span><Icon className='icon' type="eye" theme="twoTone" twoToneColor="#eb2f96"></Icon>{detail.get('looks')}</span><br/>
-            <span><Icon onClick={this.handleCollection.bind(this, detail.get('id'), detail.get('like')) } datatype={detail.get('id')} className='icon' type="like" theme="twoTone" twoToneColor="#eb2f96"></Icon>{detail.get('like')}</span>
+            <span><Icon onClick={this.handleCollection.bind(this, like.get('id'), like.get('like')) } className='icon' type="like" theme="twoTone" twoToneColor="#eb2f96"></Icon>{like.get('like')}</span>
           </div>
         </div>
       <Footer />
@@ -68,6 +64,7 @@ const mapStateToProps = (state) => {
   return {
     detail: state.getIn(['detail','detail']),
     flag: state.getIn(['blog','flag']),
+    like: state.getIn(['detail','like']),
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -76,9 +73,13 @@ const mapDispatchToProps = (dispatch) => {
     getArticleDetail(id, flag){
       dispatch(actionCreators.articleDetail(id, flag))
     },
-     //点赞
-     goods(data){
-      dispatch(actionCreatorsB.getlikes(data));
+    //获取点赞数量
+    dianzan(data){
+      dispatch(actionCreators.dianzan(data));
+    },
+    //点赞
+    updateDianzan(data){
+      dispatch(actionCreators.updateDianzan(data));
     }
   }
 }

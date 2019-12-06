@@ -48,8 +48,12 @@ export const getlikes = (data)=>{
       data.like++
       axios.post(api+'/updatearticle', data).then((res)=>{
         dispatch(likesData([{flag:1}]))
+        axios.post(api+'/dianzanUpdate', data).then((res)=>{
+          
+        })
       }).catch(()=>{
           console.log('erro1')
       })  
     }
 }
+
