@@ -19,7 +19,7 @@ class Heade extends PureComponent {
             </div>
             <div className='footer-link'>
               <p>掘 金： <a href='https://github.com/cookie-zhang' target='_blank' >https://github.com/cookie-zhang </a></p>
-              <p>gihub：<a href='https://juejin.im/user/5a75dd886fb9a063586550e6/posts' target='_blank' >https://juejin.im/user/5a75dd886fb9a063586550e6/posts </a></p>
+              <p>github：<a href='https://juejin.im/user/5a75dd886fb9a063586550e6/posts' target='_blank' >https://juejin.im/user/5a75dd886fb9a063586550e6/posts </a></p>
             </div>
           </div>
         </Footer>

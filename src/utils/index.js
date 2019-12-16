@@ -1,1 +1,1 @@
-export const api = 'https://locahost:7002/data'
+export const api = ''
