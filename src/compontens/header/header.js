@@ -18,6 +18,7 @@ class Heade extends PureComponent {
               <li><Link className='link' to={'/blog'}>博客</Link></li>
               <li><Link className='link' to={'/aboutme'}>关于我</Link></li>
               <li><Link className='link' to={'/informaineassay'}>亲随笔</Link></li>
+              <li><Link className='link' to={'/lettcode'}>每日力扣</Link></li>
             </ul>
             </div>
           </div>

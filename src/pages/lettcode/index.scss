@@ -1,0 +1,46 @@
+.lettcode-box{
+  width: 100%;
+  height: 100%;
+  .lettcode-contanier{
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    .lettcode-main{
+      margin: 0 auto;
+      overflow: hidden;
+      width: 50%;
+      height: 100%;
+      background: #fff;
+      box-shadow: 0px 0px 50px 0px rgb(189, 184, 184);
+      .main-right-list{
+        float: left;
+        min-height: 800px;
+          .article-list-box{
+            padding: 10px;
+            width: 100%;
+            min-height: 20px;
+            .article-list-contanier{
+              width: 100%;
+              height: 20px;
+              .article-list-words{
+                float: left;
+                display: inline-block;
+                .article-title{
+                  display: -webkit-box;
+                  -webkit-box-orient: vertical;
+                  -webkit-line-clamp: 3;
+                  overflow: hidden;
+                }
+              }
+              .article-list-words:hover,h2:hover{
+                cursor: pointer;
+                text-decoration: underline;
+              }
+            }
+          }
+          
+        }
+      // }
+    }
+  }
+}

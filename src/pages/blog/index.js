@@ -2,10 +2,11 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { actionCreatorsB } from './store'
+import { actionCreators } from '../lettcode/store'
 import './index.scss'
 import Head from '../../compontens/header/header'
 import Footer from '../../compontens/footer/footer'
-import { Icon,BackTop,Calendar,Timeline,Divider,Button  } from 'antd';
+import { Icon,BackTop,Timeline,Divider,Button  } from 'antd';
 import echarts from 'echarts';
 import moment from 'moment';
 import { Link } from 'react-router-dom'
@@ -81,6 +82,7 @@ class Home extends PureComponent {
     this.newGraph();
     this.props.getWords();
     this.props.getlist();
+    this.props.lettcodeList();
   }
   newGraph(){
       var myChart = echarts.init(document.getElementById('kidGraph'));
@@ -125,22 +127,24 @@ class Home extends PureComponent {
               </div>
               <div className='talkAythor'>——张见飞</div>
             </div>
-            <div className='calendar'>
-              <Calendar fullscreen={false} onPanelChange={this.onPanelChange} />
-            </div>
+            
             <div className='infomalessay-box'>
-              <Divider  orientation="left"> <h2></h2></Divider>
+              <Divider  orientation="left"> 每日力扣</Divider>
               <div className='infomalessay-list-box'>
-                公告位
+                {this.props.lettcodelist.map((item,index)=>{
+                  return (
+                    <Link className='lettcode' to={'/lettcodeDetail/'+item.get('id') } style={{color: 'rgba(0, 0, 0, 0.65)'}}> 
+                      <div className='lettcodeItem' title={(index+1+'、' ) + item.get('title')} key={item.id}>{(index+1+'、' ) + item.get('title')}</div>
+                    </Link>             
+                  )
+                })}
               </div>
             </div>
             <div className='infomalessay-box'>
-              <Divider  orientation="left"> <h2></h2></Divider>
+            <Divider  orientation="left"> 公告位</Divider>
               <div className='infomalessay-list-box'>
-                公告位
               </div>
             </div>
-
           </div>
           <div className='center-box'>
           {
@@ -161,9 +165,7 @@ class Home extends PureComponent {
                     <div className='article-list-img'>
                       <img src={item.get('coverImg')} />
                     </div>
-                    
                   </div>
-                  
                 </div>
               )
             })
@@ -180,7 +182,7 @@ class Home extends PureComponent {
                       return (
                         <Link to={'/detail/'+item.get('id') } style={{color: 'rgba(0, 0, 0, 0.65)'}}> 
                           <Timeline.Item className='timeLine'>
-                            <p>{moment(item.get('createDate')).format('YYYY-MM-DD HH:mm:ss')}</p>
+                            <p>{moment( Number(item.get('createDaTe'))).format('YYYY-MM-DD HH:mm:ss')}</p>
                             <div className='timeLineTile' style={{}}>
                               <span className='h4'>{item.get('title')}</span>
                               <div className='introduce' style={{fontSize:'12px'}}>{item.get('introduce')}</div>
@@ -208,6 +210,7 @@ const mapStateToProps = (state) => {
   return {
     words: state.getIn(['blog','words']),
     list: state.getIn(['blog','list']),
+    lettcodelist: state.getIn(['lettcode','list']),
     timeList: state.getIn(['blog','timeList']),
     flag: state.getIn(['blog','flag']),
   }
@@ -226,7 +229,10 @@ const mapDispatchToProps = (dispatch) => {
     goods(data){
       dispatch(actionCreatorsB.getlikes(data));
     },
-    
+    //获取力扣一栏
+    lettcodeList(){
+      dispatch(actionCreators.lettcodeList())
+    }
 
   }
 }

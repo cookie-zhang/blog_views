@@ -2,10 +2,12 @@ import { combineReducers } from 'redux-immutable'; //将每个页面的store整�
 import { reducer as  informaineassay} from '../pages/informaineassay/store'
 import { reducer as blog  } from '../pages/blog/store'
 import { reducer as detail  } from '../compontens/articleDetail/store'
+import { reducer as lettcode  } from '../pages//lettcode/store'
 const reducer = combineReducers({
     informaineassay: informaineassay,
     blog,
-    detail
+    detail,
+    lettcode
 })
 
 export default reducer;

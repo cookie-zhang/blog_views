@@ -7,7 +7,9 @@ import Blog from './pages/blog'
 import Informaineassay from './pages/informaineassay'
 import Aboutme  from "./pages/aboutme/index"
 import Detail from './compontens/articleDetail'
+import lettcodeDetail from './compontens/lettcodeDetail'
 import Resume from './pages/resume'
+import lettcode from './pages/lettcode'
 
 class App extends Component {
   render(){
@@ -20,6 +22,8 @@ class App extends Component {
           <Route path='/aboutme' exact component={Aboutme}></Route>
           <Route path='/detail/:id' exact component={Detail}></Route>
           <Route path='/resume' exact component={Resume}></Route>
+          <Route path='/lettcode' exact component={lettcode}></Route>
+          <Route path='/lettcodeDetail/:id' exact component={lettcodeDetail}></Route>
         </HashRouter>
       </Provider>
     )

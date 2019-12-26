@@ -1,0 +1,1 @@
+export const LETTCODE_LIST_DATA = 'lettcode_list_data'
